@@ -1,34 +1,23 @@
 "use client"
 
+import { motion } from "framer-motion"
+import { ArrowRight, ChevronDown, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useEffect, useState } from "react"
+import { CodeWindow } from "@/components/code-window"
+
+const trustStats = [
+  { value: "8+", label: "años de experiencia" },
+  { value: "180+", label: "clientes satisfechos" },
+  { value: "4.9/5", label: "calificación promedio" },
+]
 
 export default function HeroSection() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100,
-      })
-    }
-
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
-
   const scrollToContact = () => {
     const element = document.getElementById("contact")
     if (element) {
       const headerOffset = 80
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      })
+      const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - headerOffset
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" })
     }
   }
 
@@ -37,189 +26,89 @@ export default function HeroSection() {
     const nextSection = heroSection?.nextElementSibling as HTMLElement
     if (nextSection) {
       const headerOffset = 80
-      const elementPosition = nextSection.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      })
+      const offsetPosition = nextSection.getBoundingClientRect().top + window.pageYOffset - headerOffset
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" })
     }
   }
 
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 light:from-blue-50 light:via-indigo-50 light:to-purple-50 overflow-hidden theme-transition"
-    >
-      <div className="absolute inset-0 opacity-10 dark:opacity-10 light:opacity-20">
-        <div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(21,128,61,0.15),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(21,128,61,0.15),transparent_50%)] light:bg-[radial-gradient(circle_at_50%_50%,rgba(21,128,61,0.25),transparent_50%)]"
-          style={{
-            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
-          }}
-        ></div>
-
-        {/* Geometric shapes with enhanced animations */}
-        <div className="absolute top-20 left-10 w-32 h-32 border border-green-500/20 dark:border-green-500/20 light:border-green-600/30 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-lime-500/10 to-green-500/10 dark:from-lime-500/10 dark:to-green-500/10 light:from-lime-500/20 light:to-green-500/20 rounded-lg rotate-45 animate-float"></div>
-        <div className="absolute bottom-40 left-20 w-16 h-16 border-2 border-lime-400/20 dark:border-lime-400/20 light:border-lime-500/30 rotate-12 animate-float-delayed"></div>
-        <div className="absolute bottom-20 right-40 w-20 h-20 bg-gradient-to-r from-green-400/10 to-lime-400/10 dark:from-green-400/10 dark:to-lime-400/10 light:from-green-400/20 light:to-lime-400/20 rounded-full animate-pulse-slow"></div>
-
-        {/* Code-like pattern */}
-        <div className="absolute top-1/4 left-1/4 text-green-500/10 dark:text-green-500/10 light:text-green-600/20 font-mono text-sm animate-float">
-          &lt;div className="hero"&gt;
-        </div>
-        <div
-          className="absolute top-1/3 right-1/3 text-lime-500/10 dark:text-lime-500/10 light:text-lime-600/20 font-mono text-sm animate-float-slow"
-          style={{ animationDelay: "1s" }}
-        >
-          function() &#123;
-        </div>
-        <div
-          className="absolute bottom-1/3 left-1/3 text-green-400/10 dark:text-green-400/10 light:text-green-500/20 font-mono text-sm animate-float-delayed"
-          style={{ animationDelay: "2s" }}
-        >
-          &lt;/div&gt;
-        </div>
-      </div>
-
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Hero Text */}
-          <div className="text-center lg:text-left space-y-6 lg:space-y-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white dark:text-white light:text-slate-900 leading-tight theme-transition">
-              Expertos en{" "}
-              <span className="text-gradient bg-gradient-to-r from-green-400 to-lime-400 bg-clip-text text-transparent">
-                Desarrollo Web
-              </span>{" "}
-              y Móvil a Medida
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-300 dark:text-gray-300 light:text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 theme-transition">
-              Creamos experiencias digitales únicas y funcionales que impulsan el crecimiento de tu negocio. Desde
-              sitios web corporativos hasta complejas aplicaciones empresariales.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <div className="text-center lg:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="pill-badge mb-6"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-cyan-300" />
+              Software house · Colombia · LATAM
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.75rem] font-bold leading-[1.05] tracking-tight text-foreground"
+            >
+              Construimos software que{" "}
+              <span className="text-gradient-brand">acelera tu negocio</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="mt-6 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0"
+            >
+              Diseño, desarrollo y automatización de productos digitales a medida: web, móvil y plataformas
+              empresariales, construidos con ingeniería sólida y diseño que convierte.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="mt-9 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="bg-green-700 hover:bg-green-600 dark:bg-green-700 dark:hover:bg-green-600 light:bg-green-600 light:hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-700/25"
+                className="group bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white px-7 py-6 text-base font-semibold rounded-xl shadow-xl shadow-indigo-500/25 transition-all duration-300"
               >
-                Solicita una Consulta Gratuita
+                Solicita una consultoría gratuita
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Button>
-            </div>
+              <Button
+                onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+                size="lg"
+                variant="outline"
+                className="px-7 py-6 text-base font-semibold rounded-xl border-border bg-transparent hover:bg-foreground/5"
+              >
+                Ver servicios
+              </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="mt-12 flex flex-wrap gap-x-8 gap-y-4 justify-center lg:justify-start"
+            >
+              {trustStats.map((stat) => (
+                <div key={stat.label} className="text-center lg:text-left">
+                  <div className="text-2xl font-bold font-mono text-gradient-brand">{stat.value}</div>
+                  <div className="text-xs text-muted-foreground mt-0.5">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
           </div>
 
-          <div className="flex justify-center lg:justify-end mt-8 lg:mt-0">
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-              {/* Main container with glass morphism effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-lime-400/20 dark:from-green-500/20 dark:to-lime-400/20 light:from-green-400/30 light:to-lime-300/30 rounded-3xl backdrop-blur-sm border border-green-400/30 dark:border-green-400/30 light:border-green-500/40 shadow-2xl theme-transition">
-                {/* Animated gradient background */}
-                <div className="absolute inset-2 bg-gradient-to-br from-green-600/80 to-lime-500/80 dark:from-green-600/80 dark:to-lime-500/80 light:from-green-500/90 light:to-lime-400/90 rounded-2xl animate-gradient-shift theme-transition"></div>
-
-                {/* Central content area */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative z-10 text-center">
-                    {/* Animated code brackets */}
-                    <div className="relative">
-                      <div className="text-4xl sm:text-5xl lg:text-6xl font-mono font-bold text-white mb-4 animate-pulse-slow">
-                        <span className="inline-block animate-bounce" style={{ animationDelay: "0s" }}>
-                          &lt;
-                        </span>
-                        <span className="inline-block animate-bounce" style={{ animationDelay: "0.1s" }}>
-                          C
-                        </span>
-                        <span className="inline-block animate-bounce" style={{ animationDelay: "0.2s" }}>
-                          o
-                        </span>
-                        <span className="inline-block animate-bounce" style={{ animationDelay: "0.3s" }}>
-                          d
-                        </span>
-                        <span className="inline-block animate-bounce" style={{ animationDelay: "0.4s" }}>
-                          e
-                        </span>
-                        <span className="inline-block animate-bounce" style={{ animationDelay: "0.5s" }}>
-                          /
-                        </span>
-                        <span className="inline-block animate-bounce" style={{ animationDelay: "0.6s" }}>
-                          &gt;
-                        </span>
-                      </div>
-                      <div className="text-2xl sm:text-3xl lg:text-4xl font-mono font-bold text-white/90 animate-float">
-                        Build();
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating tech icons */}
-                <div
-                  className="absolute top-4 left-4 w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center animate-float"
-                  style={{ animationDelay: "0s" }}
-                >
-                  <i className="bx bxl-react text-white text-lg"></i>
-                </div>
-                <div
-                  className="absolute top-8 right-6 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center animate-float-slow"
-                  style={{ animationDelay: "1s" }}
-                >
-                  <i className="bx bxl-javascript text-white text-sm"></i>
-                </div>
-                <div
-                  className="absolute bottom-8 left-6 w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center animate-float-delayed"
-                  style={{ animationDelay: "2s" }}
-                >
-                  <i className="bx bxl-nodejs text-white text-base"></i>
-                </div>
-                <div
-                  className="absolute bottom-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center animate-float"
-                  style={{ animationDelay: "1.5s" }}
-                >
-                  <i className="bx bx-mobile-alt text-white text-lg"></i>
-                </div>
-                <div
-                  className="absolute top-1/2 left-2 w-5 h-5 bg-white/20 rounded-sm flex items-center justify-center animate-float-slow"
-                  style={{ animationDelay: "0.5s" }}
-                >
-                  <i className="bx bx-code-alt text-white text-xs"></i>
-                </div>
-                <div
-                  className="absolute top-1/3 right-2 w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center animate-float-delayed"
-                  style={{ animationDelay: "2.5s" }}
-                >
-                  <i className="bx bx-data text-white text-sm"></i>
-                </div>
-
-                {/* Orbiting elements */}
-                <div className="absolute inset-0 animate-spin-slow">
-                  <div className="absolute top-0 left-1/2 w-3 h-3 bg-lime-300 rounded-full transform -translate-x-1/2 shadow-lg shadow-lime-300/50"></div>
-                  <div className="absolute bottom-0 left-1/2 w-2 h-2 bg-green-300 rounded-full transform -translate-x-1/2 shadow-lg shadow-green-300/50"></div>
-                </div>
-                <div className="absolute inset-0 animate-spin-reverse-slow">
-                  <div className="absolute top-1/2 left-0 w-2 h-2 bg-lime-400 rounded-full transform -translate-y-1/2 shadow-lg shadow-lime-400/50"></div>
-                  <div className="absolute top-1/2 right-0 w-3 h-3 bg-green-400 rounded-full transform -translate-y-1/2 shadow-lg shadow-green-400/50"></div>
-                </div>
-
-                {/* Glowing particles */}
-                <div className="absolute inset-0 overflow-hidden rounded-2xl">
-                  <div
-                    className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full animate-ping opacity-75"
-                    style={{ animationDelay: "0s" }}
-                  ></div>
-                  <div
-                    className="absolute top-3/4 right-1/4 w-1 h-1 bg-lime-200 rounded-full animate-ping opacity-75"
-                    style={{ animationDelay: "1s" }}
-                  ></div>
-                  <div
-                    className="absolute bottom-1/4 left-3/4 w-1 h-1 bg-green-200 rounded-full animate-ping opacity-75"
-                    style={{ animationDelay: "2s" }}
-                  ></div>
-                </div>
-              </div>
-
-              {/* Outer glow effect */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-green-500/20 to-lime-400/20 dark:from-green-500/20 dark:to-lime-400/20 light:from-green-400/30 light:to-lime-300/30 rounded-3xl blur-xl animate-pulse-slow theme-transition"></div>
-            </div>
+          {/* Hero Visual */}
+          <div className="flex justify-center lg:justify-end">
+            <CodeWindow />
           </div>
         </div>
       </div>
@@ -227,10 +116,10 @@ export default function HeroSection() {
       {/* Scroll Indicator */}
       <button
         onClick={scrollToNext}
-        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-green-400 dark:text-green-400 light:text-green-600 hover:text-green-300 dark:hover:text-green-300 light:hover:text-green-700 transition-all duration-300 animate-bounce theme-transition"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-foreground transition-all duration-300 animate-bounce"
         aria-label="Scroll to next section"
       >
-        <i className="bx bx-down-arrow-alt text-2xl sm:text-3xl"></i>
+        <ChevronDown className="w-7 h-7" />
       </button>
     </section>
   )

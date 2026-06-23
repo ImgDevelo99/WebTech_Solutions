@@ -1,89 +1,46 @@
 "use client"
 
+const partners = [
+  "Microsoft",
+  "Contentful",
+  "VTEX",
+  "Adobe Commerce",
+  "AWS",
+  "Oxiris",
+  "Datadog",
+  "Eco Safe",
+  "Glamping Reino Animal",
+]
+
 export default function PartnersSection() {
-  const partners = [
-    { name: "Microsoft", logo: "https://1000marcas.net/wp-content/uploads/2019/12/Microsoft-Logo.png" },
-    {
-      name: "Contentful",
-      logo: "https://images.ctfassets.net/crb83veve8xb/3X8sgBCjbKKo3mPxGXiYlS/3a713ef1ca321546eb2a750c143de782/CONTENTFUL_PORTADA.png",
-    },
-    {
-      name: "VTEX",
-      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUbkX9JadE6T2wKLf_uI1kGFEn5LjaiBvFlA&s",
-    },
-    {
-      name: "Adobe Commerce",
-      logo: "https://cdn.prod.website-files.com/657639ebfb91510f45654149/67b4c29f569de72913a85f96_adobe-commerce-logo.png",
-    },
-    {
-      name: "AWS",
-      logo: "https://yt3.googleusercontent.com/uFYt2jmQ9-Z3Mx1YT9G1tpZHNbzTYhWNITSHr6x0UrggRvzJ7U_HeIrS9WhR2evjHWsG4jDalw=s900-c-k-c0x00ffffff-no-rj",
-    },
-    { name: "Oxiris", logo: "https://oxirischemicals.com/wp-content/uploads/2021/03/2007-Oxiris.png" },
-    { name: "Datadog", logo: "https://cdnlogo.com/logos/d/11/datadog-wordmark.svg" },
-    { name: "Eco Safe", logo: "https://eco-safe.ai/wp-content/uploads/2024/05/cropped-logo-eco-safe-296x99.jpg" },
-    {
-      name: "Glamping",
-      logo: "https://glampingreinoanimal.com.mx/wp-content/uploads/2024/09/Logotipo-Glamping-2024-redes-01.png",
-    },
-    {
-      name: "Client",
-      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUjHvBSlZJhJM5Zj1Afh1YnAYMalXvjrAmBA&s",
-    },
-  ]
-
   return (
-    <section className="py-20 bg-slate-800">
+    <section className="py-24 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-serif font-bold text-white mb-6">Nuestros clientes nuestra prioridad</h2>
-        </div>
-
-        {/* Partners Slider */}
-        <div className="relative overflow-hidden">
-          <div className="flex animate-scroll-partners space-x-12">
-            {/* First set */}
-            {partners.map((partner, index) => (
-              <div
-                key={`first-${index}`}
-                className="flex-shrink-0 w-40 h-24 bg-white rounded-lg flex items-center justify-center p-4 hover:transform hover:scale-105 transition-transform duration-300 shadow-lg"
-              >
-                <img
-                  src={partner.logo || "/placeholder.svg"}
-                  alt={partner.name}
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
-            ))}
-            {/* Duplicate set for infinite scroll */}
-            {partners.map((partner, index) => (
-              <div
-                key={`second-${index}`}
-                className="flex-shrink-0 w-40 h-24 bg-white rounded-lg flex items-center justify-center p-4 hover:transform hover:scale-105 transition-transform duration-300 shadow-lg"
-              >
-                <img
-                  src={partner.logo || "/placeholder.svg"}
-                  alt={partner.name}
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
-            ))}
-          </div>
+        <div className="text-center mb-14">
+          <span className="pill-badge mb-4">Confían en nosotros</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
+            Nuestros clientes, nuestra prioridad
+          </h2>
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes scroll-partners {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-scroll-partners {
-          animation: scroll-partners 40s linear infinite;
-        }
-        .animate-scroll-partners:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
+      <div className="relative">
+        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+        <div className="flex w-max animate-marquee-slow items-center">
+          {[...partners, ...partners].map((name, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 h-20 px-10 mx-2 flex items-center justify-center glass rounded-2xl"
+            >
+              <span className="text-lg sm:text-xl font-bold tracking-tight text-muted-foreground hover:text-foreground transition-colors duration-300 whitespace-nowrap">
+                {name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }

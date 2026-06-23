@@ -1,34 +1,36 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
+import { CalendarCheck, Briefcase, UserCheck, Globe2, Star } from "lucide-react"
 
 const stats = [
   {
-    icon: "bxs-calendar-star",
+    icon: CalendarCheck,
     number: 8,
     suffix: "+",
     description: "Más de 8 años de experiencia brindando soluciones de software personalizadas y efectivas.",
   },
   {
-    icon: "bxs-briefcase-alt-2",
+    icon: Briefcase,
     number: 758,
     suffix: "",
     description: "Proyectos completados con éxito, entregando valor real a nuestros clientes.",
   },
   {
-    icon: "bxs-user-check",
+    icon: UserCheck,
     number: 180,
     suffix: "",
     description: "Clientes satisfechos que confían en nuestra experiencia tecnológica.",
   },
   {
-    icon: "bx-globe",
+    icon: Globe2,
     number: 10,
     suffix: "",
     description: "Presencia internacional, llevando soluciones digitales a nuevos horizontes.",
   },
   {
-    icon: "bxs-star",
+    icon: Star,
     number: 4.9,
     suffix: "",
     description: "Calificación promedio basada en la excelencia y satisfacción de nuestros usuarios.",
@@ -47,7 +49,6 @@ export default function StatsSection() {
           if (entry.isIntersecting && !hasAnimated) {
             setHasAnimated(true)
 
-            // Animate each number
             stats.forEach((stat, index) => {
               const duration = 1500
               const increment = stat.number / (duration / 16)
@@ -81,32 +82,41 @@ export default function StatsSection() {
   }, [hasAnimated])
 
   return (
-    <section ref={sectionRef} id="stats" className="py-20 bg-slate-800">
+    <section ref={sectionRef} id="stats" className="py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-serif font-bold text-white mb-6">Cifras que Hablan por Nosotros</h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            En cada línea de código y en cada proyecto entregado, reflejamos compromiso, innovación y resultados que
-            nuestros clientes valoran.
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <span className="pill-badge mb-4">Resultados</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-tight">
+            Cifras que hablan por nosotros
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            En cada línea de código y en cada proyecto entregado, reflejamos compromiso, innovación y resultados.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="bg-slate-900 p-6 rounded-xl border border-slate-700 hover:border-green-700 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl hover:shadow-green-700/10 text-center"
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-green-700 to-lime-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className={`bx ${stat.icon} text-2xl text-white`}></i>
-              </div>
-              <div className="text-3xl font-bold text-white mb-2">
-                {stat.number === 4.9 ? animatedNumbers[index].toFixed(1) : Math.ceil(animatedNumbers[index])}
-                {stat.suffix}
-              </div>
-              <p className="text-gray-300 text-sm leading-relaxed">{stat.description}</p>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          {stats.map((stat, index) => {
+            const Icon = stat.icon
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: index * 0.07 }}
+                className="glass-card p-6 text-center"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-indigo-500/20">
+                  <Icon className="w-6.5 h-6.5 text-white" strokeWidth={1.7} />
+                </div>
+                <div className="text-3xl font-bold font-mono text-foreground mb-2">
+                  {stat.number === 4.9 ? animatedNumbers[index].toFixed(1) : Math.ceil(animatedNumbers[index])}
+                  {stat.suffix}
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">{stat.description}</p>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>

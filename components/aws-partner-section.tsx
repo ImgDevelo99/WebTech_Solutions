@@ -1,48 +1,52 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { CheckCircle2, Cloud, ArrowUpRight } from "lucide-react"
+import { FeatureVisual } from "@/components/feature-visual"
+
+const highlights = ["Infraestructura Escalable", "Seguridad Empresarial", "Soporte 24/7"]
+
 export default function AWSPartnerSection() {
   return (
-    <section className="py-20 bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900">
+    <section className="py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Image */}
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-xl shadow-2xl">
-              <img
-                src="https://ausum.cloud/wp-content/uploads/2024/02/aws-servicios-principales.jpg"
-                alt="AWS Partner Logo"
-                className="w-full h-96 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-900/40 to-transparent"></div>
-            </div>
-            {/* Decorative Elements */}
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-purple-500/20 rounded-full blur-xl"></div>
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-pink-500/20 rounded-full blur-xl"></div>
-          </div>
+        <div className="grid lg:grid-cols-2 gap-14 items-center">
+          <FeatureVisual
+            icon={Cloud}
+            label="Infraestructura cloud certificada, lista para escalar"
+            accent="indigo"
+            stats={[
+              { value: "99.99%", label: "disponibilidad" },
+              { value: "AWS", label: "certificados" },
+            ]}
+          />
 
-          {/* Content */}
-          <div className="space-y-6">
-            <h2 className="text-4xl font-serif font-bold text-white">Socios de AWS</h2>
-            <p className="text-xl text-gray-200 leading-relaxed">
-              Como socios certificados de Amazon Web Services (AWS), en WebTech_Solutions ofrecemos soluciones cloud de
-              clase mundial respaldadas por la infraestructura líder en el mercado.
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            <span className="pill-badge">Cloud Partner</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight">Socios de AWS</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Como socios certificados de Amazon Web Services (AWS), en WebTech_Solutions ofrecemos soluciones cloud
+              de clase mundial respaldadas por la infraestructura líder en el mercado.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <div className="flex items-center space-x-2 text-purple-300">
-                <i className="bx bx-check-circle text-xl"></i>
-                <span className="font-semibold">Infraestructura Escalable</span>
-              </div>
-              <div className="flex items-center space-x-2 text-purple-300">
-                <i className="bx bx-check-circle text-xl"></i>
-                <span className="font-semibold">Seguridad Empresarial</span>
-              </div>
-              <div className="flex items-center space-x-2 text-purple-300">
-                <i className="bx bx-check-circle text-xl"></i>
-                <span className="font-semibold">Soporte 24/7</span>
-              </div>
+            <div className="flex flex-wrap gap-3">
+              {highlights.map((item) => (
+                <div key={item} className="flex items-center gap-2 pill-badge text-foreground">
+                  <CheckCircle2 className="w-4 h-4 text-indigo-300" />
+                  <span className="font-medium">{item}</span>
+                </div>
+              ))}
             </div>
-            <button className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-3 rounded-lg transition-colors duration-300 font-semibold">
+            <button className="group inline-flex items-center gap-1.5 bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-indigo-500/25">
               Conoce más
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

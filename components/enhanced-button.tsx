@@ -21,13 +21,13 @@ const EnhancedButton = forwardRef<HTMLButtonElement, EnhancedButtonProps>(
       pulse: "hover:animate-pulse",
       wiggle: "hover:animate-wiggle",
       glow: "animate-glow",
-      shimmer: "animate-shimmer bg-gradient-to-r from-green-600 via-lime-500 to-green-600",
+      shimmer: "animate-shimmer bg-gradient-to-r from-indigo-600 via-violet-500 to-indigo-600",
     }
 
     const variantClasses = {
       gradient:
-        "bg-gradient-to-r from-green-600 to-lime-500 text-white hover:from-green-700 hover:to-lime-600 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300",
-      glow: "bg-green-600 text-white hover:bg-green-700 shadow-lg hover:shadow-green-500/50 hover:shadow-2xl transition-all duration-300",
+        "bg-gradient-to-r from-indigo-500 to-violet-500 text-white hover:from-indigo-400 hover:to-violet-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300",
+      glow: "bg-indigo-500 text-white hover:bg-indigo-400 shadow-lg hover:shadow-indigo-500/50 hover:shadow-2xl transition-all duration-300",
     }
 
     if (variant === "gradient" || variant === "glow") {

@@ -1,128 +1,92 @@
 "use client"
 
-import { useState } from "react"
+import { motion } from "framer-motion"
+import { Code2, Globe, ShieldCheck, Plug, Rocket, ArrowUpRight } from "lucide-react"
 
 const services = [
   {
     id: "content1",
     title: "Desarrollo de software",
-    image: "https://desarrollodesoftware.com.co/storage-desarrollo/desarrollo-de-api.jpg",
+    icon: Code2,
     description:
       "Nos especializamos en el desarrollo de aplicaciones personalizadas que se adaptan a las necesidades de tu empresa, con soluciones escalables y eficientes.",
+    accent: "from-indigo-500/20 to-violet-500/10",
   },
   {
     id: "content2",
     title: "Desarrollo Web",
-    image: "https://adecomsoluciones.com/wp-content/uploads/2019/02/Desarrollo-web.jpg",
+    icon: Globe,
     description:
       "Creamos sitios web dinámicos y funcionales con tecnologías modernas, enfocados en la experiencia del usuario y la optimización para motores de búsqueda.",
+    accent: "from-cyan-400/20 to-indigo-500/10",
   },
   {
     id: "content3",
     title: "Código seguro",
-    image:
-      "https://www.portasigma.com/wp-content/uploads/2022/10/que-es-el-codigo-seguro-de-verificacion-del-dni.jpg.webp",
+    icon: ShieldCheck,
     description:
       "Ofrecemos soluciones para implementar sistemas de seguridad en tus aplicaciones, garantizando la protección de la información con estándares de la industria.",
+    accent: "from-violet-500/20 to-cyan-400/10",
   },
   {
     id: "content4",
     title: "Expertos en APIs",
-    image:
-      "https://amarilio.com.mx/wp-content/uploads/2021/03/Expertos-en-desarrolllo-de-apis-en-Mexico-Agencia-de-Marketing-Digital-Amarilio.jpg",
+    icon: Plug,
     description:
       "Desarrollamos e implementamos APIs robustas que permiten la integración de sistemas y facilitan la interacción entre diferentes plataformas.",
+    accent: "from-indigo-500/20 to-cyan-400/10",
   },
   {
     id: "content5",
     title: "Transformación Digital",
-    image: "https://agenciadigitalamd.com/wp-content/uploads/2021/04/desarrollo-de-software-bogota-800x534-1.jpg",
+    icon: Rocket,
     description:
       "Acompañamos a las empresas en su proceso de transformación digital, implementando soluciones tecnológicas que mejoran la eficiencia operativa y la competitividad.",
+    accent: "from-cyan-400/20 to-violet-500/10",
   },
 ]
 
 export default function ServicesGrid() {
-  const [expandedService, setExpandedService] = useState<string | null>(null)
-
-  const toggleContent = (contentId: string) => {
-    setExpandedService(expandedService === contentId ? null : contentId)
-  }
-
   return (
-    <section className="py-20 bg-slate-800">
+    <section className="py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-serif font-bold text-white mb-4">Expertos en Desarrollos a la Medida</h2>
-          <p className="text-xl text-gray-300">Empresa de Desarrollo de Software en Colombia</p>
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <span className="pill-badge mb-4">Lo que hacemos</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-tight">
+            Expertos en desarrollos a la medida
+          </h2>
+          <p className="text-lg text-muted-foreground">Empresa de desarrollo de software en Colombia.</p>
         </div>
 
-        {/* Main Grid - 3 cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {services.slice(0, 3).map((service, index) => (
-            <div
-              key={service.id}
-              className={`relative group overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:scale-105 ${
-                index === 1 ? "md:scale-110" : ""
-              }`}
-            >
-              <div className="aspect-[4/3] relative">
-                <img
-                  src={service.image || "/placeholder.svg"}
-                  alt={service.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-2xl font-serif font-bold mb-4 drop-shadow-lg">{service.title}</h3>
-                <button
-                  onClick={() => toggleContent(service.id)}
-                  className="bg-green-700 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors duration-300 font-semibold"
-                >
-                  Ver más
-                </button>
-                {expandedService === service.id && (
-                  <div className="mt-4 p-4 bg-slate-900/90 rounded-lg backdrop-blur-sm">
-                    <p className="text-gray-200 leading-relaxed">{service.description}</p>
+        {/* Bento layout: first card large, rest in a grid */}
+        <div className="grid md:grid-cols-3 gap-5">
+          {services.map((service, index) => {
+            const Icon = service.icon
+            return (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: index * 0.07 }}
+                className={`group relative glass-card overflow-hidden p-7 flex flex-col ${
+                  index === 0 ? "md:col-span-2 md:row-span-1" : ""
+                }`}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} opacity-60`} />
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                    <Icon className="w-6 h-6 text-foreground" strokeWidth={1.7} />
                   </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom Row - 2 cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {services.slice(3, 5).map((service) => (
-            <div
-              key={service.id}
-              className="relative group overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:scale-105"
-            >
-              <div className="aspect-[4/3] relative">
-                <img
-                  src={service.image || "/placeholder.svg"}
-                  alt={service.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-2xl font-serif font-bold mb-4 drop-shadow-lg">{service.title}</h3>
-                <button
-                  onClick={() => toggleContent(service.id)}
-                  className="bg-green-700 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors duration-300 font-semibold"
-                >
-                  Ver más
-                </button>
-                {expandedService === service.id && (
-                  <div className="mt-4 p-4 bg-slate-900/90 rounded-lg backdrop-blur-sm">
-                    <p className="text-gray-200 leading-relaxed">{service.description}</p>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">{service.description}</p>
+                  <div className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-indigo-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Saber más <ArrowUpRight className="w-3.5 h-3.5" />
                   </div>
-                )}
-              </div>
-            </div>
-          ))}
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
