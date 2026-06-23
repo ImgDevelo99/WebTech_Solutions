@@ -11,9 +11,9 @@ interface FeatureVisualProps {
 }
 
 const accentMap = {
-  indigo: { from: "from-indigo-500/25", to: "to-violet-500/25", ring: "border-indigo-400/30", glow: "bg-indigo-500/20" },
-  cyan: { from: "from-cyan-400/25", to: "to-indigo-500/25", ring: "border-cyan-400/30", glow: "bg-cyan-400/20" },
-  violet: { from: "from-violet-500/25", to: "to-cyan-400/25", ring: "border-violet-400/30", glow: "bg-violet-500/20" },
+  indigo: { from: "from-sky-700", to: "to-blue-600", ring: "border-sky-400/30", glow: "bg-sky-700/20" },
+  cyan: { from: "from-cyan-600", to: "to-sky-700", ring: "border-cyan-400/30", glow: "bg-cyan-500/20" },
+  violet: { from: "from-blue-600", to: "to-cyan-600", ring: "border-blue-400/30", glow: "bg-blue-600/20" },
 }
 
 export function FeatureVisual({ icon: Icon, label, stats, accent = "indigo" }: FeatureVisualProps) {

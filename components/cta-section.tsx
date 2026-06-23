@@ -14,16 +14,25 @@ export default function CTASection() {
   }
 
   return (
-    <section id="cta" className="py-24">
+    <section id="cta" className="py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-3xl p-12 sm:p-16 text-center bg-gradient-to-br from-indigo-600 via-violet-600 to-cyan-500"
+          className="relative overflow-hidden rounded-3xl p-12 sm:p-16 text-center bg-gradient-to-br from-slate-900 via-sky-700 to-cyan-500"
         >
-          <div className="absolute inset-0 grid-overlay opacity-30" />
+          <div
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
+              backgroundSize: "56px 56px",
+              maskImage: "radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 100%)",
+              WebkitMaskImage: "radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 100%)",
+            }}
+          />
           <div className="absolute -top-16 -right-16 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
           <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
 
@@ -37,7 +46,7 @@ export default function CTASection() {
             </p>
             <button
               onClick={scrollToContact}
-              className="group inline-flex items-center gap-2 bg-white text-indigo-700 hover:bg-white/90 px-8 py-4 rounded-xl text-base font-semibold transition-all duration-300 shadow-xl"
+              className="group inline-flex items-center gap-2 bg-white text-sky-700 hover:bg-white/90 px-8 py-4 rounded-xl text-base font-semibold transition-all duration-300 shadow-xl"
             >
               Contáctanos ahora
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

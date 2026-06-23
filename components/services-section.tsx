@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Smartphone, Building2, Users, BarChart3, ShoppingCart } from "lucide-react"
+import { Smartphone, Building2, ShoppingCart, Plug, ShieldCheck, Compass } from "lucide-react"
 
 const services = [
   {
@@ -12,35 +12,41 @@ const services = [
   },
   {
     icon: Building2,
-    title: "Soluciones Empresariales",
+    title: "Soluciones Empresariales a Medida",
     description:
-      "Desarrollamos software a medida, integramos sistemas (CRM, ERP) y automatizamos procesos para maximizar la eficiencia operativa de tu negocio.",
-  },
-  {
-    icon: Users,
-    title: "Asesorías Tecnológicas",
-    description:
-      "Te acompañamos en tu transformación digital, definiendo estrategias IT, eligiendo las tecnologías adecuadas y adoptando soluciones en la nube.",
-  },
-  {
-    icon: BarChart3,
-    title: "Análisis de Sistemas",
-    description:
-      "Evaluamos tus sistemas tecnológicos actuales para identificar áreas de mejora, optimizar el rendimiento y proponer soluciones escalables a futuro.",
+      "Desarrollamos software a medida e integramos sistemas (CRM, ERP) para maximizar la eficiencia operativa de tu negocio, sin atarte a plantillas genéricas.",
   },
   {
     icon: ShoppingCart,
-    title: "Tiendas en Línea (E-commerce)",
+    title: "E-commerce",
     description:
-      "Construimos plataformas de e-commerce atractivas, seguras y fáciles de gestionar, optimizadas para la conversión y la experiencia del cliente.",
+      "Construimos plataformas de comercio electrónico atractivas, seguras y fáciles de gestionar, optimizadas para la conversión y la experiencia del cliente.",
+  },
+  {
+    icon: Plug,
+    title: "Automatización & APIs",
+    description:
+      "Diseñamos APIs robustas y flujos de integración que conectan tus sistemas entre sí, eliminando tareas manuales y silos de información.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Cloud & Seguridad",
+    description:
+      "Desplegamos infraestructura en la nube escalable y aplicamos buenas prácticas de seguridad en cada capa, desde el código hasta el despliegue.",
+  },
+  {
+    icon: Compass,
+    title: "Consultoría & Transformación Digital",
+    description:
+      "Evaluamos tu stack actual y te acompañamos en la definición de estrategia IT, elección de tecnologías y adopción de soluciones en la nube.",
   },
 ]
 
-export default function MainServices() {
+export default function ServicesSection() {
   return (
-    <section id="services" className="relative py-24 overflow-hidden">
+    <section id="services" className="relative py-16 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
+        <div className="text-center mb-10 max-w-2xl mx-auto">
           <span className="pill-badge mb-4">Servicios</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-tight">Nuestros Servicios</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -60,7 +66,7 @@ export default function MainServices() {
                 transition={{ duration: 0.5, delay: index * 0.06 }}
                 className="group glass-card p-8"
               >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-indigo-500/20">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-700 to-cyan-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-sky-700/20">
                   <Icon className="w-6.5 h-6.5 text-white" strokeWidth={1.7} />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-gradient-brand transition-colors duration-300">

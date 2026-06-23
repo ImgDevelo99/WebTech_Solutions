@@ -51,7 +51,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.75rem] font-bold leading-[1.05] tracking-tight text-foreground"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground"
             >
               Construimos software que{" "}
               <span className="text-gradient-brand">acelera tu negocio</span>
@@ -76,7 +76,7 @@ export default function HeroSection() {
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="group bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white px-7 py-6 text-base font-semibold rounded-xl shadow-xl shadow-indigo-500/25 transition-all duration-300"
+                className="group bg-gradient-to-r from-sky-700 to-cyan-600 hover:from-sky-600 hover:to-cyan-500 text-white px-7 py-6 text-base font-semibold rounded-xl shadow-xl shadow-sky-700/25 transition-all duration-300"
               >
                 Solicita una consultoría gratuita
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

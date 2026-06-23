@@ -1,25 +1,48 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Menu, X, Sparkles } from "lucide-react"
+import { motion } from "framer-motion"
+import { Menu, X } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
+import { Logo } from "@/components/logo"
 
 const navItems = [
   { id: "services", label: "Servicios" },
+  { id: "about", label: "Quiénes somos" },
   { id: "automation", label: "Automatización" },
   { id: "testimonials", label: "Testimonios" },
+  { id: "faq", label: "FAQ" },
   { id: "contact", label: "Contacto" },
 ]
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState<string>("")
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 24)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.getElementById(item.id))
+      .filter((el): el is HTMLElement => el !== null)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id)
+        })
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
+    )
+
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
   }, [])
 
   const scrollToSection = (sectionId: string) => {
@@ -46,33 +69,45 @@ export default function Header() {
           }`}
         >
           {/* Logo */}
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-indigo-500/30">
-              <Sparkles className="w-4.5 h-4.5 text-white" strokeWidth={2.2} />
-            </div>
-            <span className="text-lg font-bold tracking-tight text-foreground">
-              WebTech<span className="text-gradient-brand">_Solutions</span>
-            </span>
-          </div>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="WebTech_Solutions — ir al inicio"
+            className="rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            <Logo />
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground rounded-lg hover:bg-foreground/5 transition-colors duration-200"
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
+                    isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active-dot"
+                      className="absolute left-1/2 -translate-x-1/2 bottom-0.5 w-1 h-1 rounded-full bg-gradient-to-r from-sky-600 to-cyan-400"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </button>
+              )
+            })}
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
             <Button
               onClick={() => scrollToSection("contact")}
-              className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white rounded-xl shadow-lg shadow-indigo-500/25"
+              className="bg-gradient-to-r from-sky-700 to-cyan-600 hover:from-sky-600 hover:to-cyan-500 text-white rounded-xl shadow-lg shadow-sky-700/25"
             >
               Hablemos
             </Button>
@@ -83,8 +118,9 @@ export default function Header() {
             <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-foreground p-2"
-              aria-label="Toggle menu"
+              className="text-foreground p-2.5 -mr-0.5 rounded-lg hover:bg-foreground/10 transition-colors duration-200"
+              aria-label={isMobileMenuOpen ? "Cerrar menu" : "Abrir menu"}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -106,7 +142,7 @@ export default function Header() {
               ))}
               <Button
                 onClick={() => scrollToSection("contact")}
-                className="w-full mt-2 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-xl"
+                className="w-full mt-2 bg-gradient-to-r from-sky-700 to-cyan-600 text-white rounded-xl"
               >
                 Hablemos
               </Button>

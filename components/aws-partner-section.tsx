@@ -8,7 +8,7 @@ const highlights = ["Infraestructura Escalable", "Seguridad Empresarial", "Sopor
 
 export default function AWSPartnerSection() {
   return (
-    <section className="py-24">
+    <section className="py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           <FeatureVisual
@@ -37,12 +37,12 @@ export default function AWSPartnerSection() {
             <div className="flex flex-wrap gap-3">
               {highlights.map((item) => (
                 <div key={item} className="flex items-center gap-2 pill-badge text-foreground">
-                  <CheckCircle2 className="w-4 h-4 text-indigo-300" />
+                  <CheckCircle2 className="w-4 h-4 text-sky-700 dark:text-sky-300" />
                   <span className="font-medium">{item}</span>
                 </div>
               ))}
             </div>
-            <button className="group inline-flex items-center gap-1.5 bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-indigo-500/25">
+            <button className="group inline-flex items-center gap-1.5 bg-gradient-to-r from-sky-700 to-cyan-600 hover:from-sky-600 hover:to-cyan-500 text-white px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-sky-700/25">
               Conoce más
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>

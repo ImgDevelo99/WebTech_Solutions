@@ -8,8 +8,8 @@ const testimonials = [
   {
     text: "WebTech Solutions transformó completamente nuestra presencia digital. Su equipo entendió perfectamente nuestras necesidades y entregó una plataforma web robusta que ha aumentado nuestras ventas en un 150%.",
     author: "Ana García",
-    position: "CEO de InnovaTech",
-    company: "InnovaTech Solutions",
+    position: "CEO",
+    company: "Sector Retail",
     initials: "AG",
     rating: 5,
     project: "Plataforma E-commerce",
@@ -18,7 +18,7 @@ const testimonials = [
     text: "El proceso de consultoría fue excepcional. Nos ayudaron a modernizar nuestra infraestructura tecnológica y automatizar procesos clave, resultando en un aumento del 200% en productividad.",
     author: "Carlos Martínez",
     position: "Director de Operaciones",
-    company: "TechCorp Industries",
+    company: "Industria Manufacturera",
     initials: "CM",
     rating: 5,
     project: "Automatización de Procesos",
@@ -27,7 +27,7 @@ const testimonials = [
     text: "Increíble trabajo en el desarrollo de nuestra aplicación móvil. El equipo fue muy profesional, cumplió todos los plazos y el resultado superó nuestras expectativas. Altamente recomendados.",
     author: "María Rodríguez",
     position: "Fundadora",
-    company: "StartupTech",
+    company: "Industria Tecnológica",
     initials: "MR",
     rating: 5,
     project: "Aplicación Móvil",
@@ -36,7 +36,7 @@ const testimonials = [
     text: "La migración a la nube que realizaron fue perfecta. Sin interrupciones, mejor rendimiento y costos reducidos. Su expertise técnico es impresionante.",
     author: "Roberto Silva",
     position: "CTO",
-    company: "DataFlow Systems",
+    company: "Sector Logístico",
     initials: "RS",
     rating: 5,
     project: "Migración a la Nube",
@@ -44,7 +44,7 @@ const testimonials = [
 ]
 
 const summaryStats = [
-  { value: "50+", label: "Proyectos Completados" },
+  { value: "758+", label: "Proyectos Completados" },
   { value: "98%", label: "Satisfacción del Cliente" },
   { value: "24/7", label: "Soporte Técnico" },
   { value: "5★", label: "Calificación Promedio" },
@@ -58,9 +58,9 @@ export default function TestimonialsSection() {
   const active = testimonials[current]
 
   return (
-    <section id="testimonials" className="py-24">
+    <section id="testimonials" className="py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
+        <div className="text-center mb-10 max-w-2xl mx-auto">
           <span className="pill-badge mb-4">Testimonios</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-tight">
             Lo que dicen nuestros clientes
@@ -68,9 +68,9 @@ export default function TestimonialsSection() {
           <p className="text-lg text-muted-foreground">La satisfacción de nuestros clientes es nuestra mayor recompensa.</p>
         </div>
 
-        <div className="max-w-3xl mx-auto mb-16">
+        <div className="max-w-3xl mx-auto mb-12">
           <div className="glass-card relative overflow-hidden p-8 md:p-12">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
+            <div className="absolute top-0 right-0 w-40 h-40 bg-sky-700/10 rounded-full -translate-y-16 translate-x-16 blur-2xl" />
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-400/10 rounded-full translate-y-12 -translate-x-12 blur-2xl" />
 
             <AnimatePresence mode="wait">
@@ -89,21 +89,21 @@ export default function TestimonialsSection() {
                 </div>
 
                 <div className="text-center mb-8">
-                  <Quote className="w-9 h-9 text-indigo-300/60 mb-4 mx-auto" />
+                  <Quote className="w-9 h-9 text-sky-700/50 dark:text-sky-300/60 mb-4 mx-auto" />
                   <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed italic font-light">
                     "{active.text}"
                   </p>
                 </div>
 
                 <div className="flex items-center justify-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center text-white font-semibold text-sm shadow-lg shadow-indigo-500/25">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-sky-700 to-cyan-400 flex items-center justify-center text-white font-semibold text-sm shadow-lg shadow-sky-700/25">
                     {active.initials}
                   </div>
                   <div className="text-center">
                     <h4 className="text-base font-semibold text-foreground">{active.author}</h4>
-                    <p className="text-indigo-300 text-sm font-medium">{active.position}</p>
+                    <p className="text-sky-700 dark:text-sky-300 text-sm font-medium">{active.position}</p>
                     <p className="text-muted-foreground text-xs">{active.company}</p>
-                    <span className="inline-block mt-1.5 px-3 py-0.5 bg-cyan-400/10 text-cyan-300 text-xs rounded-full border border-cyan-400/20">
+                    <span className="inline-block mt-1.5 px-3 py-0.5 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 text-xs rounded-full border border-cyan-500/20">
                       {active.project}
                     </span>
                   </div>
@@ -126,7 +126,7 @@ export default function TestimonialsSection() {
                     key={index}
                     onClick={() => setCurrent(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === current ? "bg-indigo-400 w-6" : "bg-foreground/20"
+                      index === current ? "bg-sky-600 w-6" : "bg-foreground/20"
                     }`}
                     aria-label={`Testimonio ${index + 1}`}
                   />

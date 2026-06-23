@@ -29,9 +29,9 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
+        <div className="text-center mb-10 max-w-2xl mx-auto">
           <span className="pill-badge mb-4">Contacto</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-tight">Ponte en Contacto</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -62,7 +62,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   required
                   placeholder="Ej: Juan Pérez"
-                  className="w-full pl-10 pr-4 py-3 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground/60 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 transition-colors duration-300"
+                  className="w-full pl-10 pr-4 py-3 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground/60 focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20 transition-colors duration-300"
                 />
               </div>
             </div>
@@ -81,7 +81,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   required
                   placeholder="Ej: tuemail@dominio.com"
-                  className="w-full pl-10 pr-4 py-3 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground/60 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 transition-colors duration-300"
+                  className="w-full pl-10 pr-4 py-3 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground/60 focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20 transition-colors duration-300"
                 />
               </div>
             </div>
@@ -100,7 +100,7 @@ export default function ContactSection() {
                   required
                   rows={5}
                   placeholder="Cuéntanos sobre tu proyecto o consulta..."
-                  className="w-full pl-10 pr-4 py-3 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground/60 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 transition-colors duration-300 resize-vertical"
+                  className="w-full pl-10 pr-4 py-3 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground/60 focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20 transition-colors duration-300 resize-vertical"
                 />
               </div>
             </div>
@@ -108,7 +108,7 @@ export default function ContactSection() {
             <Button
               type="submit"
               size="lg"
-              className="w-full bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white py-6 text-base font-semibold rounded-xl shadow-lg shadow-indigo-500/25 transition-all duration-300"
+              className="w-full bg-gradient-to-r from-sky-700 to-cyan-600 hover:from-sky-600 hover:to-cyan-500 text-white py-6 text-base font-semibold rounded-xl shadow-lg shadow-sky-700/25 transition-all duration-300"
             >
               Enviar Mensaje
               <Send className="w-4 h-4" />

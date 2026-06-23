@@ -43,9 +43,9 @@ const impactStats = [
 
 export default function AutomationSection() {
   return (
-    <section id="automation" className="py-24">
+    <section id="automation" className="py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-10 max-w-3xl mx-auto">
           <span className="pill-badge mb-4">Automatización</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 tracking-tight">
             Automatización de Procesos
@@ -69,7 +69,7 @@ export default function AutomationSection() {
                 transition={{ duration: 0.5, delay: index * 0.08 }}
                 className="glass-card p-7 group"
               >
-                <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 border border-white/15 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-foreground/5 border border-foreground/10 mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Icon className="w-7 h-7" style={{ color: tool.color }} />
                 </div>
 
@@ -79,7 +79,7 @@ export default function AutomationSection() {
                 <ul className="space-y-2">
                   {tool.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-xs text-muted-foreground gap-2">
-                      <Check className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400 flex-shrink-0" />
                       {feature}
                     </li>
                   ))}

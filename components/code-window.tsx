@@ -3,11 +3,11 @@
 import { motion } from "framer-motion"
 
 const lines = [
-  { indent: 0, text: "export function buildProduct() {", color: "text-indigo-300" },
+  { indent: 0, text: "export function buildProduct() {", color: "text-sky-300" },
   { indent: 1, text: "const strategy = defineRoadmap();", color: "text-slate-300" },
   { indent: 1, text: "const ui = craftExperience(strategy);", color: "text-slate-300" },
   { indent: 1, text: "deploy(ui).to('cloud');", color: "text-cyan-300" },
-  { indent: 0, text: "}", color: "text-indigo-300" },
+  { indent: 0, text: "}", color: "text-sky-300" },
   { indent: 0, text: "" , color: "text-slate-300"},
   { indent: 0, text: "// status: shipping value daily", color: "text-emerald-400/80" },
 ]
@@ -20,14 +20,15 @@ export function CodeWindow() {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="relative w-full max-w-md"
     >
-      <div className="absolute -inset-6 bg-gradient-to-br from-indigo-500/30 via-violet-500/20 to-cyan-400/30 rounded-[2rem] blur-2xl" />
+      <div className="absolute -inset-6 bg-gradient-to-br from-sky-700/30 via-blue-600/20 to-cyan-400/30 rounded-[2rem] blur-2xl" />
 
-      <div className="glass-card relative overflow-hidden rounded-2xl shadow-2xl">
+      {/* Code editors are conventionally dark — kept dark regardless of site theme for authenticity */}
+      <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-slate-900 border border-white/10">
         <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10">
           <span className="w-3 h-3 rounded-full bg-rose-400/80" />
           <span className="w-3 h-3 rounded-full bg-amber-400/80" />
           <span className="w-3 h-3 rounded-full bg-emerald-400/80" />
-          <span className="ml-3 text-xs font-mono text-muted-foreground">product.ts</span>
+          <span className="ml-3 text-xs font-mono text-slate-400">product.ts</span>
         </div>
 
         <div className="p-6 font-mono text-sm leading-relaxed">
@@ -53,11 +54,11 @@ export function CodeWindow() {
         </div>
 
         <div className="flex items-center justify-between px-6 py-3 border-t border-white/10 bg-white/[0.02]">
-          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <div className="flex items-center gap-2 text-xs text-slate-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             build passing
           </div>
-          <span className="text-xs font-mono text-muted-foreground">main</span>
+          <span className="text-xs font-mono text-slate-400">main</span>
         </div>
       </div>
 
@@ -66,7 +67,7 @@ export function CodeWindow() {
         <span className="absolute -top-2 left-1/2 w-2.5 h-2.5 rounded-full bg-cyan-300 shadow-lg shadow-cyan-300/50" />
       </div>
       <div className="absolute inset-0 animate-spin-reverse-slow pointer-events-none">
-        <span className="absolute top-1/2 -right-2 w-2 h-2 rounded-full bg-indigo-300 shadow-lg shadow-indigo-300/50" />
+        <span className="absolute top-1/2 -right-2 w-2 h-2 rounded-full bg-sky-300 shadow-lg shadow-sky-300/50" />
       </div>
     </motion.div>
   )

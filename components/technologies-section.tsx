@@ -32,9 +32,9 @@ const technologies = [
 
 export default function TechnologiesSection() {
   return (
-    <section id="technologies" className="py-24 overflow-hidden">
+    <section id="technologies" className="py-16 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-10 max-w-3xl mx-auto">
           <span className="pill-badge mb-4">Stack tecnológico</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 tracking-tight">
             Algunas de las tecnologías que dominamos

@@ -14,7 +14,7 @@ const partners = [
 
 export default function PartnersSection() {
   return (
-    <section className="py-24 overflow-hidden">
+    <section className="py-16 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="pill-badge mb-4">Confían en nosotros</span>

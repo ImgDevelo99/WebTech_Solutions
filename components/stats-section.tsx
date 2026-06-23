@@ -14,13 +14,13 @@ const stats = [
   {
     icon: Briefcase,
     number: 758,
-    suffix: "",
+    suffix: "+",
     description: "Proyectos completados con éxito, entregando valor real a nuestros clientes.",
   },
   {
     icon: UserCheck,
     number: 180,
-    suffix: "",
+    suffix: "+",
     description: "Clientes satisfechos que confían en nuestra experiencia tecnológica.",
   },
   {
@@ -82,9 +82,9 @@ export default function StatsSection() {
   }, [hasAnimated])
 
   return (
-    <section ref={sectionRef} id="stats" className="py-24">
+    <section ref={sectionRef} id="stats" className="py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
+        <div className="text-center mb-10 max-w-2xl mx-auto">
           <span className="pill-badge mb-4">Resultados</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-tight">
             Cifras que hablan por nosotros
@@ -106,7 +106,7 @@ export default function StatsSection() {
                 transition={{ duration: 0.5, delay: index * 0.07 }}
                 className="glass-card p-6 text-center"
               >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-indigo-500/20">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-700 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-sky-700/20">
                   <Icon className="w-6.5 h-6.5 text-white" strokeWidth={1.7} />
                 </div>
                 <div className="text-3xl font-bold font-mono text-foreground mb-2">

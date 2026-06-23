@@ -12,7 +12,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="h-9 w-9 md:h-10 md:w-10 relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-110 text-foreground hover:bg-foreground/10"
+      className="h-11 w-11 md:h-10 md:w-10 relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-110 text-foreground hover:bg-foreground/10"
       aria-label="Cambiar tema"
     >
       <Sun
