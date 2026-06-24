@@ -32,7 +32,8 @@ export function FeatureVisual({ icon: Icon, label, stats, accent = "indigo" }: F
       >
         <div className="absolute inset-0 grid-overlay opacity-40" />
 
-        <div className="relative w-24 h-24 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
+        <div className="relative w-24 h-24 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+          <div className="absolute inset-[-10px] rounded-full border border-dashed border-white/15" />
           <Icon className="w-11 h-11 text-white" strokeWidth={1.5} />
         </div>
 

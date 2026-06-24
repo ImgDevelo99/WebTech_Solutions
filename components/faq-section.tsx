@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { ChevronDown, HelpCircle } from "lucide-react"
+import { handleSpotlight } from "@/lib/utils"
 
 const faqs = [
   {
@@ -59,6 +60,7 @@ export default function FAQSection() {
             return (
               <motion.div
                 key={index}
+                onMouseMove={handleSpotlight}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}

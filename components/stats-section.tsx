@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { CalendarCheck, Briefcase, UserCheck, Globe2, Star } from "lucide-react"
+import { handleSpotlight } from "@/lib/utils"
 
 const stats = [
   {
@@ -94,30 +95,30 @@ export default function StatsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: index * 0.07 }}
-                className="glass-card p-6 text-center"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-700 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-sky-700/20">
-                  <Icon className="w-6.5 h-6.5 text-white" strokeWidth={1.7} />
+        <motion.div
+          onMouseMove={handleSpotlight}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="glass-card p-2"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-border">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon
+              return (
+                <div key={index} className="text-center px-6 py-8">
+                  <Icon className="w-7 h-7 mx-auto mb-4 text-sky-600 dark:text-sky-300" strokeWidth={1.5} />
+                  <div className="text-3xl font-bold font-mono text-gradient-brand mb-2">
+                    {stat.number === 4.9 ? animatedNumbers[index].toFixed(1) : Math.ceil(animatedNumbers[index])}
+                    {stat.suffix}
+                  </div>
+                  <p className="text-muted-foreground text-xs leading-relaxed">{stat.description}</p>
                 </div>
-                <div className="text-3xl font-bold font-mono text-foreground mb-2">
-                  {stat.number === 4.9 ? animatedNumbers[index].toFixed(1) : Math.ceil(animatedNumbers[index])}
-                  {stat.suffix}
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">{stat.description}</p>
-              </motion.div>
-            )
-          })}
-        </div>
+              )
+            })}
+          </div>
+        </motion.div>
       </div>
     </section>
   )

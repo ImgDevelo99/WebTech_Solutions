@@ -210,6 +210,8 @@
   }
 
   .glass-card {
+    position: relative;
+    overflow: hidden;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius-xl);
@@ -217,9 +219,34 @@
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.4s ease;
   }
 
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+      450px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      color-mix(in oklch, var(--accent) 16%, transparent),
+      transparent 70%
+    );
+    transition: opacity 0.4s ease;
+  }
+
+  .glass-card:hover::before {
+    opacity: 1;
+  }
+
   .glass-card:hover {
     border-color: color-mix(in oklch, var(--accent) 35%, var(--border));
     box-shadow: 0 1px 2px oklch(0.2 0.02 264 / 4%), 0 16px 32px -12px oklch(0.2 0.02 264 / 10%);
+    transform: translateY(-3px);
+  }
+
+  /* Hexagonal icon container: breaks the square/circle icon-badge monotony */
+  .shape-hexagon {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   }
 
   .dark .glass-card {

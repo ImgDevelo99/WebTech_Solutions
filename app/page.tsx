@@ -1,3 +1,4 @@
+import { AmbientBackground } from "@/components/ambient-background"
 import Header from "@/components/header"
 import HeroSection from "@/components/hero-section"
 import TrustStrip from "@/components/trust-strip"
@@ -21,15 +22,7 @@ import WhatsAppFloat from "@/components/whatsapp-float"
 export default function HomePage() {
   return (
     <div className="min-h-screen relative overflow-hidden bg-background text-foreground theme-transition">
-      {/* Ambient background: aurora mesh + grid, fixed behind all content */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 mesh-aurora animate-gradient-shift" style={{ backgroundSize: "200% 200%" }} />
-        <div className="absolute inset-0 grid-overlay" />
-        <div className="absolute inset-0 noise-overlay mix-blend-overlay" />
-
-        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-sky-700/10 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl animate-float-delayed" />
-      </div>
+      <AmbientBackground />
 
       <div className="relative z-10">
         <Header />

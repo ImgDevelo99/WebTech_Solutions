@@ -76,21 +76,22 @@ export default function AboutSection() {
           />
         </div>
 
-        {/* Values / pillars */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* Values / pillars — circular badges, no card chrome, for contrast with the rest of the page */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {values.map((value, index) => {
             const Icon = value.icon
             return (
               <motion.div
                 key={value.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="glass-card p-6"
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-center lg:text-left"
               >
-                <div className="w-12 h-12 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-sky-700 dark:text-sky-300" strokeWidth={1.7} />
+                <div className="relative w-14 h-14 rounded-full bg-gradient-to-br from-sky-700 to-cyan-400 flex items-center justify-center mb-4 mx-auto lg:mx-0 shadow-lg shadow-sky-700/20">
+                  <div className="absolute inset-[-6px] rounded-full border border-dashed border-sky-500/25" />
+                  <Icon className="w-6.5 h-6.5 text-white" strokeWidth={1.7} />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">{value.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>

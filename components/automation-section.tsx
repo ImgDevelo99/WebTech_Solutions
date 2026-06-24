@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import { Workflow, Check } from "lucide-react"
 import { SiN8N, SiZapier, SiMake } from "react-icons/si"
+import { handleSpotlight } from "@/lib/utils"
+import { DecorativeNetwork } from "@/components/decorative-network"
 
 const automationTools = [
   {
@@ -43,8 +45,9 @@ const impactStats = [
 
 export default function AutomationSection() {
   return (
-    <section id="automation" className="py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="automation" className="relative py-16 overflow-hidden">
+      <DecorativeNetwork className="absolute -top-10 -right-16 w-[420px] h-auto text-sky-700/[0.07] dark:text-sky-400/[0.08] pointer-events-none" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-10 max-w-3xl mx-auto">
           <span className="pill-badge mb-4">Automatización</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 tracking-tight">
@@ -63,13 +66,14 @@ export default function AutomationSection() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                onMouseMove={handleSpotlight}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
                 className="glass-card p-7 group"
               >
-                <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-foreground/5 border border-foreground/10 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="shape-hexagon flex items-center justify-center w-14 h-14 bg-foreground/5 border border-foreground/10 mb-6 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
                   <Icon className="w-7 h-7" style={{ color: tool.color }} />
                 </div>
 
@@ -90,7 +94,7 @@ export default function AutomationSection() {
         </div>
 
         <div className="mt-14 text-center">
-          <div className="glass-card p-8 sm:p-10 max-w-4xl mx-auto">
+          <div onMouseMove={handleSpotlight} className="glass-card p-8 sm:p-10 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-foreground mb-8">¿Por qué automatizar tus procesos?</h3>
             <div className="grid md:grid-cols-3 gap-8">
               {impactStats.map((stat) => (
